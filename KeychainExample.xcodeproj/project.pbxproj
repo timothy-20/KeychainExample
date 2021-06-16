@@ -1,0 +1,491 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		99BE914E26787F9B005616E1 /* KeyStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 99BE914D26787F9B005616E1 /* KeyStore.m */; };
+		99BE91522679CC68005616E1 /* KeyGenerateExample.m in Sources */ = {isa = PBXBuildFile; fileRef = 99BE91512679CC68005616E1 /* KeyGenerateExample.m */; };
+		99DCF6CE2670AE9D002D641E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 99DCF6CD2670AE9D002D641E /* AppDelegate.m */; };
+		99DCF6D12670AE9D002D641E /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 99DCF6D02670AE9D002D641E /* SceneDelegate.m */; };
+		99DCF6D42670AE9D002D641E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 99DCF6D32670AE9D002D641E /* ViewController.m */; };
+		99DCF6D72670AE9D002D641E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99DCF6D52670AE9D002D641E /* Main.storyboard */; };
+		99DCF6D92670AEA5002D641E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 99DCF6D82670AEA5002D641E /* Assets.xcassets */; };
+		99DCF6DC2670AEA5002D641E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99DCF6DA2670AEA5002D641E /* LaunchScreen.storyboard */; };
+		99DCF6DF2670AEA5002D641E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 99DCF6DE2670AEA5002D641E /* main.m */; };
+		99DCF6E82670AEDE002D641E /* KeychainSetter.m in Sources */ = {isa = PBXBuildFile; fileRef = 99DCF6E72670AEDE002D641E /* KeychainSetter.m */; };
+		99DCF6EB2671C1A7002D641E /* KeychainExample.m in Sources */ = {isa = PBXBuildFile; fileRef = 99DCF6EA2671C1A7002D641E /* KeychainExample.m */; };
+		99DCF6EF2671EA4A002D641E /* KeychainSetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99DCF6EE2671EA4A002D641E /* KeychainSetter.swift */; };
+		99DCF6F326731EB0002D641E /* PBECrypt.m in Sources */ = {isa = PBXBuildFile; fileRef = 99DCF6F226731EB0002D641E /* PBECrypt.m */; };
+		99DCF6F9267718E1002D641E /* PBKDF2Crypt.m in Sources */ = {isa = PBXBuildFile; fileRef = 99DCF6F8267718E0002D641E /* PBKDF2Crypt.m */; };
+		AF370BA6F5046C22FFB28679 /* Pods_KeychainExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44E05B42EC6FB5B9FE5D36FB /* Pods_KeychainExample.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		44E05B42EC6FB5B9FE5D36FB /* Pods_KeychainExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KeychainExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		99BE914C26787F9B005616E1 /* KeyStore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KeyStore.h; sourceTree = "<group>"; };
+		99BE914D26787F9B005616E1 /* KeyStore.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KeyStore.m; sourceTree = "<group>"; };
+		99BE91502679CC68005616E1 /* KeyGenerateExample.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KeyGenerateExample.h; sourceTree = "<group>"; };
+		99BE91512679CC68005616E1 /* KeyGenerateExample.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KeyGenerateExample.m; sourceTree = "<group>"; };
+		99DCF6C92670AE9D002D641E /* KeychainExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KeychainExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		99DCF6CC2670AE9D002D641E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		99DCF6CD2670AE9D002D641E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		99DCF6CF2670AE9D002D641E /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
+		99DCF6D02670AE9D002D641E /* SceneDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
+		99DCF6D22670AE9D002D641E /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		99DCF6D32670AE9D002D641E /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		99DCF6D62670AE9D002D641E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		99DCF6D82670AEA5002D641E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		99DCF6DB2670AEA5002D641E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		99DCF6DD2670AEA5002D641E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		99DCF6DE2670AEA5002D641E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		99DCF6E62670AEDE002D641E /* KeychainSetter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KeychainSetter.h; sourceTree = "<group>"; };
+		99DCF6E72670AEDE002D641E /* KeychainSetter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KeychainSetter.m; sourceTree = "<group>"; };
+		99DCF6E92671C1A7002D641E /* KeychainExample.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KeychainExample.h; sourceTree = "<group>"; };
+		99DCF6EA2671C1A7002D641E /* KeychainExample.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KeychainExample.m; sourceTree = "<group>"; };
+		99DCF6ED2671EA49002D641E /* KeychainExample-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "KeychainExample-Bridging-Header.h"; sourceTree = "<group>"; };
+		99DCF6EE2671EA4A002D641E /* KeychainSetter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainSetter.swift; sourceTree = "<group>"; };
+		99DCF6F126731EAF002D641E /* PBECrypt.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PBECrypt.h; sourceTree = "<group>"; };
+		99DCF6F226731EB0002D641E /* PBECrypt.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PBECrypt.m; sourceTree = "<group>"; };
+		99DCF6F7267718E0002D641E /* PBKDF2Crypt.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PBKDF2Crypt.h; sourceTree = "<group>"; };
+		99DCF6F8267718E0002D641E /* PBKDF2Crypt.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PBKDF2Crypt.m; sourceTree = "<group>"; };
+		AE811139489E3B82DCB421FB /* Pods-KeychainExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KeychainExample.release.xcconfig"; path = "Target Support Files/Pods-KeychainExample/Pods-KeychainExample.release.xcconfig"; sourceTree = "<group>"; };
+		F34D7AC4958A911E71EB6886 /* Pods-KeychainExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KeychainExample.debug.xcconfig"; path = "Target Support Files/Pods-KeychainExample/Pods-KeychainExample.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		99DCF6C62670AE9C002D641E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AF370BA6F5046C22FFB28679 /* Pods_KeychainExample.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		09E3F1841E042FD0C3A73E4C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				44E05B42EC6FB5B9FE5D36FB /* Pods_KeychainExample.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		1BA0C813A7683F3E15D091DE /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F34D7AC4958A911E71EB6886 /* Pods-KeychainExample.debug.xcconfig */,
+				AE811139489E3B82DCB421FB /* Pods-KeychainExample.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		99BE914B26787F69005616E1 /* KeyGroup */ = {
+			isa = PBXGroup;
+			children = (
+				99BE914C26787F9B005616E1 /* KeyStore.h */,
+				99BE914D26787F9B005616E1 /* KeyStore.m */,
+			);
+			path = KeyGroup;
+			sourceTree = "<group>";
+		};
+		99BE914F2679CC40005616E1 /* Example */ = {
+			isa = PBXGroup;
+			children = (
+				99DCF6E92671C1A7002D641E /* KeychainExample.h */,
+				99DCF6EA2671C1A7002D641E /* KeychainExample.m */,
+				99BE91502679CC68005616E1 /* KeyGenerateExample.h */,
+				99BE91512679CC68005616E1 /* KeyGenerateExample.m */,
+			);
+			path = Example;
+			sourceTree = "<group>";
+		};
+		99DCF6C02670AE9C002D641E = {
+			isa = PBXGroup;
+			children = (
+				99DCF6CB2670AE9D002D641E /* KeychainExample */,
+				99DCF6CA2670AE9D002D641E /* Products */,
+				1BA0C813A7683F3E15D091DE /* Pods */,
+				09E3F1841E042FD0C3A73E4C /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		99DCF6CA2670AE9D002D641E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				99DCF6C92670AE9D002D641E /* KeychainExample.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		99DCF6CB2670AE9D002D641E /* KeychainExample */ = {
+			isa = PBXGroup;
+			children = (
+				99BE914F2679CC40005616E1 /* Example */,
+				99BE914B26787F69005616E1 /* KeyGroup */,
+				99DCF6F026731E41002D641E /* PBE */,
+				99DCF6EC2671EA1D002D641E /* Keychain_Swift */,
+				99DCF6E52670AEC2002D641E /* Keychain */,
+				99DCF6CC2670AE9D002D641E /* AppDelegate.h */,
+				99DCF6CD2670AE9D002D641E /* AppDelegate.m */,
+				99DCF6CF2670AE9D002D641E /* SceneDelegate.h */,
+				99DCF6D02670AE9D002D641E /* SceneDelegate.m */,
+				99DCF6D22670AE9D002D641E /* ViewController.h */,
+				99DCF6D32670AE9D002D641E /* ViewController.m */,
+				99DCF6D52670AE9D002D641E /* Main.storyboard */,
+				99DCF6D82670AEA5002D641E /* Assets.xcassets */,
+				99DCF6DA2670AEA5002D641E /* LaunchScreen.storyboard */,
+				99DCF6DD2670AEA5002D641E /* Info.plist */,
+				99DCF6DE2670AEA5002D641E /* main.m */,
+			);
+			path = KeychainExample;
+			sourceTree = "<group>";
+		};
+		99DCF6E52670AEC2002D641E /* Keychain */ = {
+			isa = PBXGroup;
+			children = (
+				99DCF6E62670AEDE002D641E /* KeychainSetter.h */,
+				99DCF6E72670AEDE002D641E /* KeychainSetter.m */,
+			);
+			path = Keychain;
+			sourceTree = "<group>";
+		};
+		99DCF6EC2671EA1D002D641E /* Keychain_Swift */ = {
+			isa = PBXGroup;
+			children = (
+				99DCF6EE2671EA4A002D641E /* KeychainSetter.swift */,
+				99DCF6ED2671EA49002D641E /* KeychainExample-Bridging-Header.h */,
+			);
+			path = Keychain_Swift;
+			sourceTree = "<group>";
+		};
+		99DCF6F026731E41002D641E /* PBE */ = {
+			isa = PBXGroup;
+			children = (
+				99DCF6F126731EAF002D641E /* PBECrypt.h */,
+				99DCF6F226731EB0002D641E /* PBECrypt.m */,
+				99DCF6F7267718E0002D641E /* PBKDF2Crypt.h */,
+				99DCF6F8267718E0002D641E /* PBKDF2Crypt.m */,
+			);
+			path = PBE;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		99DCF6C82670AE9C002D641E /* KeychainExample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 99DCF6E22670AEA5002D641E /* Build configuration list for PBXNativeTarget "KeychainExample" */;
+			buildPhases = (
+				D283F18603E902DDAE3D29F4 /* [CP] Check Pods Manifest.lock */,
+				99DCF6C52670AE9C002D641E /* Sources */,
+				99DCF6C62670AE9C002D641E /* Frameworks */,
+				99DCF6C72670AE9C002D641E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = KeychainExample;
+			productName = KeychainExample;
+			productReference = 99DCF6C92670AE9D002D641E /* KeychainExample.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		99DCF6C12670AE9C002D641E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1250;
+				TargetAttributes = {
+					99DCF6C82670AE9C002D641E = {
+						CreatedOnToolsVersion = 12.5;
+						LastSwiftMigration = 1250;
+					};
+				};
+			};
+			buildConfigurationList = 99DCF6C42670AE9C002D641E /* Build configuration list for PBXProject "KeychainExample" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 99DCF6C02670AE9C002D641E;
+			productRefGroup = 99DCF6CA2670AE9D002D641E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				99DCF6C82670AE9C002D641E /* KeychainExample */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		99DCF6C72670AE9C002D641E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				99DCF6DC2670AEA5002D641E /* LaunchScreen.storyboard in Resources */,
+				99DCF6D92670AEA5002D641E /* Assets.xcassets in Resources */,
+				99DCF6D72670AE9D002D641E /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		D283F18603E902DDAE3D29F4 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-KeychainExample-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		99DCF6C52670AE9C002D641E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				99DCF6EF2671EA4A002D641E /* KeychainSetter.swift in Sources */,
+				99DCF6D42670AE9D002D641E /* ViewController.m in Sources */,
+				99BE914E26787F9B005616E1 /* KeyStore.m in Sources */,
+				99DCF6CE2670AE9D002D641E /* AppDelegate.m in Sources */,
+				99DCF6E82670AEDE002D641E /* KeychainSetter.m in Sources */,
+				99DCF6DF2670AEA5002D641E /* main.m in Sources */,
+				99DCF6EB2671C1A7002D641E /* KeychainExample.m in Sources */,
+				99DCF6F326731EB0002D641E /* PBECrypt.m in Sources */,
+				99DCF6D12670AE9D002D641E /* SceneDelegate.m in Sources */,
+				99DCF6F9267718E1002D641E /* PBKDF2Crypt.m in Sources */,
+				99BE91522679CC68005616E1 /* KeyGenerateExample.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		99DCF6D52670AE9D002D641E /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				99DCF6D62670AE9D002D641E /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		99DCF6DA2670AEA5002D641E /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				99DCF6DB2670AEA5002D641E /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		99DCF6E02670AEA5002D641E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		99DCF6E12670AEA5002D641E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		99DCF6E32670AEA5002D641E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F34D7AC4958A911E71EB6886 /* Pods-KeychainExample.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5WC353G536;
+				INFOPLIST_FILE = KeychainExample/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = timothy.KeychainExample;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "KeychainExample/Keychain_Swift/KeychainExample-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		99DCF6E42670AEA5002D641E /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = AE811139489E3B82DCB421FB /* Pods-KeychainExample.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5WC353G536;
+				INFOPLIST_FILE = KeychainExample/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = timothy.KeychainExample;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "KeychainExample/Keychain_Swift/KeychainExample-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		99DCF6C42670AE9C002D641E /* Build configuration list for PBXProject "KeychainExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				99DCF6E02670AEA5002D641E /* Debug */,
+				99DCF6E12670AEA5002D641E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		99DCF6E22670AEA5002D641E /* Build configuration list for PBXNativeTarget "KeychainExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				99DCF6E32670AEA5002D641E /* Debug */,
+				99DCF6E42670AEA5002D641E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 99DCF6C12670AE9C002D641E /* Project object */;
+}
