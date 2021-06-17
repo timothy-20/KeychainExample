@@ -9,9 +9,12 @@
 
 @interface KeyStore : NSObject
 
-+(SecKeyRef)generateRSAKeyWithTag:(NSString *)publicTagString inPrivateTag:(NSString *)privateTagString;
-+(void)getKeychainWithTag:(NSString *)tagString;
-
++(void)createRandomKeyPairWithTag:(NSString *)tag;
 +(void)checkAllKeychainItems;
++(void)deleteAllKeychainItems;
+
++(SecKeyRef)getPrivateKey:(NSString *)tag;
++(CFDataRef)encryptWithTag:(NSString *)tag inPlainText:(NSString *)plainText;
++(NSString *)decryptWithTag:(NSString *)tag inCipher:(CFDataRef)cipher;
 
 @end

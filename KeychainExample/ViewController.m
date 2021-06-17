@@ -21,8 +21,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    /**
-    
     NSString *pinCode = [NSString stringWithFormat:@"000000"];
     //int, NSNumber과 같은 기본 포맷으로 받는다면 접근제어자로 변환하면 된다.
     NSString *masterKey = [NSString stringWithFormat:@"This_is_Master_Key"];
@@ -37,23 +35,20 @@
     NSString *masterKeyWithBase64 = [masterKeyCipher base64EncodedStringWithOptions:0];
     
     NSString *saltAndMasterKey = [[NSString alloc] initWithFormat:@"%@%@",saltWithBase64 ,masterKeyWithBase64];
+//    이런식으로 데이터를 합쳐두는지는 모르겠다.
     
-     */
+    NSLog(@"saltAndAsterKey_Cipher__%@", saltAndMasterKey);
      
-    //여기서부터 keychain에서 publicKey를 호출하는 소스가 구현되면 된다.
-    /*============================================================*/
     
-//    SecKeyRef publicKeyRef = [KeyStore generateRSAKeyWithTag:@"xx" inPrivateTag:@"zz"];
-//
-//
-//    [KeyStore getKeychainWithTag:@"xx"];
-//    [KeyStore getKeychainWithTag:@"zz"];
-//    [KeyStore getKeychainWithTag:@"yy"];
+    [KeyStore createRandomKeyPairWithTag:@"a"];
     
-    [KeyStore checkAllKeychainItems];
+    CFDataRef keychainCipher = [KeyStore encryptWithTag:@"a" inPlainText:saltAndMasterKey];
+    NSLog(@"Encryption_Result__%@", keychainCipher);
     
-    /*============================================================*/
+    NSString *keychainDecryption = [KeyStore decryptWithTag:@"a" inCipher:keychainCipher];
+    NSLog(@"Decryption_Result__%@", keychainDecryption);
     
+    [KeyStore deleteAllKeychainItems];
 }
 
 @end
