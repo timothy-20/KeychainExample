@@ -18,7 +18,6 @@
 		99DCF6DF2670AEA5002D641E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 99DCF6DE2670AEA5002D641E /* main.m */; };
 		99DCF6E82670AEDE002D641E /* KeychainSetter.m in Sources */ = {isa = PBXBuildFile; fileRef = 99DCF6E72670AEDE002D641E /* KeychainSetter.m */; };
 		99DCF6EB2671C1A7002D641E /* KeychainExample.m in Sources */ = {isa = PBXBuildFile; fileRef = 99DCF6EA2671C1A7002D641E /* KeychainExample.m */; };
-		99DCF6EF2671EA4A002D641E /* KeychainSetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99DCF6EE2671EA4A002D641E /* KeychainSetter.swift */; };
 		99DCF6F326731EB0002D641E /* PBECrypt.m in Sources */ = {isa = PBXBuildFile; fileRef = 99DCF6F226731EB0002D641E /* PBECrypt.m */; };
 		99DCF6F9267718E1002D641E /* PBKDF2Crypt.m in Sources */ = {isa = PBXBuildFile; fileRef = 99DCF6F8267718E0002D641E /* PBKDF2Crypt.m */; };
 		AF370BA6F5046C22FFB28679 /* Pods_KeychainExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44E05B42EC6FB5B9FE5D36FB /* Pods_KeychainExample.framework */; };
@@ -46,8 +45,6 @@
 		99DCF6E72670AEDE002D641E /* KeychainSetter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KeychainSetter.m; sourceTree = "<group>"; };
 		99DCF6E92671C1A7002D641E /* KeychainExample.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KeychainExample.h; sourceTree = "<group>"; };
 		99DCF6EA2671C1A7002D641E /* KeychainExample.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KeychainExample.m; sourceTree = "<group>"; };
-		99DCF6ED2671EA49002D641E /* KeychainExample-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "KeychainExample-Bridging-Header.h"; sourceTree = "<group>"; };
-		99DCF6EE2671EA4A002D641E /* KeychainSetter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainSetter.swift; sourceTree = "<group>"; };
 		99DCF6F126731EAF002D641E /* PBECrypt.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PBECrypt.h; sourceTree = "<group>"; };
 		99DCF6F226731EB0002D641E /* PBECrypt.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PBECrypt.m; sourceTree = "<group>"; };
 		99DCF6F7267718E0002D641E /* PBKDF2Crypt.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PBKDF2Crypt.h; sourceTree = "<group>"; };
@@ -85,13 +82,13 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		99BE914B26787F69005616E1 /* KeyGroup */ = {
+		99BE914B26787F69005616E1 /* KeyStore */ = {
 			isa = PBXGroup;
 			children = (
 				99BE914C26787F9B005616E1 /* KeyStore.h */,
 				99BE914D26787F9B005616E1 /* KeyStore.m */,
 			);
-			path = KeyGroup;
+			path = KeyStore;
 			sourceTree = "<group>";
 		};
 		99BE914F2679CC40005616E1 /* Example */ = {
@@ -127,9 +124,8 @@
 			isa = PBXGroup;
 			children = (
 				99BE914F2679CC40005616E1 /* Example */,
-				99BE914B26787F69005616E1 /* KeyGroup */,
+				99BE914B26787F69005616E1 /* KeyStore */,
 				99DCF6F026731E41002D641E /* PBE */,
-				99DCF6EC2671EA1D002D641E /* Keychain_Swift */,
 				99DCF6E52670AEC2002D641E /* Keychain */,
 				99DCF6CC2670AE9D002D641E /* AppDelegate.h */,
 				99DCF6CD2670AE9D002D641E /* AppDelegate.m */,
@@ -153,15 +149,6 @@
 				99DCF6E72670AEDE002D641E /* KeychainSetter.m */,
 			);
 			path = Keychain;
-			sourceTree = "<group>";
-		};
-		99DCF6EC2671EA1D002D641E /* Keychain_Swift */ = {
-			isa = PBXGroup;
-			children = (
-				99DCF6EE2671EA4A002D641E /* KeychainSetter.swift */,
-				99DCF6ED2671EA49002D641E /* KeychainExample-Bridging-Header.h */,
-			);
-			path = Keychain_Swift;
 			sourceTree = "<group>";
 		};
 		99DCF6F026731E41002D641E /* PBE */ = {
@@ -271,7 +258,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				99DCF6EF2671EA4A002D641E /* KeychainSetter.swift in Sources */,
 				99DCF6D42670AE9D002D641E /* ViewController.m in Sources */,
 				99BE914E26787F9B005616E1 /* KeyStore.m in Sources */,
 				99DCF6CE2670AE9D002D641E /* AppDelegate.m in Sources */,
@@ -358,7 +344,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -411,7 +397,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

@@ -10,19 +10,36 @@
 #import "KeychainSetter.h"
 #import "PBKDF2Crypt.h"
 
-#import "KeyStore.h"
-
-@interface ViewController ()
-
-@end
+#import "KeyStore/KeyStore.h"
 
 @implementation ViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+}
+
+-(IBAction)createKeyPairButton:(id)sender {
+    NSData *tag = [@"aa" dataUsingEncoding:NSUTF8StringEncoding];
+    [KeyStore createRandomKeyPairWithTag:tag];
+}
+
+-(IBAction)checkKeychainForTouchIdButton:(id)sender
+{
+//    [KeyStore verifyKeychainForTouchId];
+    [KeyStore getPrivateKey:@"aa"];
+}
+
+-(IBAction)deleteAllKeychainButton:(id)sender {
+    [KeyStore deleteAllKeychainItems];
+}
+
+-(IBAction)checkAllKeychainButton:(id)sender {
+    [KeyStore checkAllKeychainItems];
+}
+
+-(void)setKeychainForPincode
+{
     NSString *pinCode = [NSString stringWithFormat:@"000000"];
-    //int, NSNumber과 같은 기본 포맷으로 받는다면 접근제어자로 변환하면 된다.
     NSString *masterKey = [NSString stringWithFormat:@"This_is_Master_Key"];
     
     NSData *saltData = [PBKDF2Crypt secRandom8BytesSalt];

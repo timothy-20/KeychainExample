@@ -9,12 +9,15 @@
 
 @interface KeyStore : NSObject
 
-+(void)createRandomKeyPairWithTag:(NSString *)tag;
++(void)createRandomKeyPairWithTag:(NSData *)tag;
 +(void)checkAllKeychainItems;
 +(void)deleteAllKeychainItems;
 
 +(SecKeyRef)getPrivateKey:(NSString *)tag;
 +(CFDataRef)encryptWithTag:(NSString *)tag inPlainText:(NSString *)plainText;
 +(NSString *)decryptWithTag:(NSString *)tag inCipher:(CFDataRef)cipher;
+
++(void)setKeychainForTouchId:(NSString *)plainText;
++(void)verifyKeychainForTouchId;
 
 @end
