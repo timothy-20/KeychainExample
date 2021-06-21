@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		99BE914E26787F9B005616E1 /* KeyStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 99BE914D26787F9B005616E1 /* KeyStore.m */; };
 		99BE91522679CC68005616E1 /* KeyGenerateExample.m in Sources */ = {isa = PBXBuildFile; fileRef = 99BE91512679CC68005616E1 /* KeyGenerateExample.m */; };
+		99BE91552680587B005616E1 /* TestAsync.m in Sources */ = {isa = PBXBuildFile; fileRef = 99BE91542680587B005616E1 /* TestAsync.m */; };
 		99DCF6CE2670AE9D002D641E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 99DCF6CD2670AE9D002D641E /* AppDelegate.m */; };
 		99DCF6D12670AE9D002D641E /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 99DCF6D02670AE9D002D641E /* SceneDelegate.m */; };
 		99DCF6D42670AE9D002D641E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 99DCF6D32670AE9D002D641E /* ViewController.m */; };
@@ -29,6 +30,8 @@
 		99BE914D26787F9B005616E1 /* KeyStore.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KeyStore.m; sourceTree = "<group>"; };
 		99BE91502679CC68005616E1 /* KeyGenerateExample.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KeyGenerateExample.h; sourceTree = "<group>"; };
 		99BE91512679CC68005616E1 /* KeyGenerateExample.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KeyGenerateExample.m; sourceTree = "<group>"; };
+		99BE91532680587B005616E1 /* TestAsync.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestAsync.h; sourceTree = "<group>"; };
+		99BE91542680587B005616E1 /* TestAsync.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestAsync.m; sourceTree = "<group>"; };
 		99DCF6C92670AE9D002D641E /* KeychainExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KeychainExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		99DCF6CC2670AE9D002D641E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		99DCF6CD2670AE9D002D641E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -87,6 +90,8 @@
 			children = (
 				99BE914C26787F9B005616E1 /* KeyStore.h */,
 				99BE914D26787F9B005616E1 /* KeyStore.m */,
+				99BE91532680587B005616E1 /* TestAsync.h */,
+				99BE91542680587B005616E1 /* TestAsync.m */,
 			);
 			path = KeyStore;
 			sourceTree = "<group>";
@@ -260,6 +265,7 @@
 			files = (
 				99DCF6D42670AE9D002D641E /* ViewController.m in Sources */,
 				99BE914E26787F9B005616E1 /* KeyStore.m in Sources */,
+				99BE91552680587B005616E1 /* TestAsync.m in Sources */,
 				99DCF6CE2670AE9D002D641E /* AppDelegate.m in Sources */,
 				99DCF6E82670AEDE002D641E /* KeychainSetter.m in Sources */,
 				99DCF6DF2670AEA5002D641E /* main.m in Sources */,

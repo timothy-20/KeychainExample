@@ -9,11 +9,12 @@
 
 @interface KeyStore : NSObject
 
-+(void)createRandomKeyPairWithTag:(NSData *)tag;
++(void)keychainWithAlertView:(UIViewController *)view;
+
 +(void)checkAllKeychainItems;
 +(void)deleteAllKeychainItems;
 
-+(SecKeyRef)getPrivateKey:(NSString *)tag;
++(SecKeyRef)getPrivateKey;
 +(CFDataRef)encryptWithTag:(NSString *)tag inPlainText:(NSString *)plainText;
 +(NSString *)decryptWithTag:(NSString *)tag inCipher:(CFDataRef)cipher;
 

@@ -11,19 +11,22 @@
 @import Security;
 @import LocalAuthentication;
 
-@interface AlertModules : UIViewController
--(void)pincodeAlert;
+@implementation KeyStore
 
-@end
+#pragma mark - Keychain Modules
 
-@implementation AlertModules
-
--(void)pincodeAlert
++(void)pincodeAlertWithView:(UIViewController *)view completionHandler:(void(^)(NSString *pincode))completion
 {
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Retry" message:@"Access your password on the keychain" preferredStyle:UIAlertControllerStyleAlert];
     
-    UIAlertAction *pincodeAction = [UIAlertAction actionWithTitle:@"암호 입력" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-        
+    [alert addTextFieldWithConfigurationHandler:^(UITextField *textField) {
+        textField.placeholder = @"Enter pincode";
+        textField.secureTextEntry = YES;
+    }];
+    
+    UIAlertAction *pincodeAction = [UIAlertAction actionWithTitle:@"입력" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        completion(alert.textFields[0].text);
+        [alert dismissViewControllerAnimated:YES completion:nil];
     }];
     
     UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"취소" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
@@ -34,25 +37,14 @@
     [alert addAction:pincodeAction];
     [alert addAction:cancelAction];
     
-    [alert addTextFieldWithConfigurationHandler:^(UITextField *textField) {
-        textField.placeholder = @"Enter pincode";
-        textField.secureTextEntry = YES;
-    }];
-    
-    [self presentViewController:alert animated:YES completion:nil];
+    [view presentViewController:alert animated:YES completion:nil];
 }
-
-@end
-
-@implementation KeyStore
-
-#pragma mark - Keychain Modules
 
 /**
 @method createRandomKeyPairWithTag
     tag값을 식별자로 랜덤한 keyPair을 생성합니다. 현재는 레거시가 된 SecKeyGeneratePair 대신 SecKeyCreateRandomKey 함수를 사용합니다.
  */
-+(void)createRandomKeyPairWithTag:(NSData *)tag
++(void)keychainWithAlertView:(UIViewController *)view
 {
     LAContext *context = [[LAContext alloc] init];
     NSError *contextError = nil;
@@ -62,17 +54,72 @@
         return;
     }
     
+    [context evaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics localizedReason:@"Access your password on the keychain" reply:^(BOOL success, NSError *error) {
+        if (success) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                NSLog(@"Success__Biometry Authentification.");
+                [self createRSAKeyPairWithBiometry:context withPincode:nil];
+            });
+            
+        } else {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                switch (error.code) {
+                    case LAErrorUserFallback:
+                    {
+                        NSLog(@"Fallback__Pincode Insert.");
+                        [self pincodeAlertWithView:view completionHandler:^(NSString *pincode) {
+                            NSLog(@"Receive_pincode__%@", pincode);
+                            [self createRSAKeyPairWithBiometry:nil withPincode:pincode];
+                        }];
+                    }
+                        break;
+                        
+                    case LAErrorUserCancel:
+                    {
+                        NSLog(@"Cancel__Pincode Insert.");
+                        
+                        [self pincodeAlertWithView:view completionHandler:^(NSString *pincode) {
+                            NSLog(@"Receive_pincode__%@", pincode);
+                            [self createRSAKeyPairWithBiometry:nil withPincode:pincode];
+                        }];
+                    }
+                        break;
+                        
+                    default:
+                        NSLog(@"Error_Ocurred__%@",error.description);
+                        break;
+                }
+            });
+        }
+    }];
     
-    
+    return;
+}
+
++(void)createRSAKeyPairWithBiometry:(LAContext *)context withPincode:(NSString *)pincode
+{
+    CFErrorRef attrError = NULL;
     CFErrorRef accessControlError = NULL;
-    SecAccessControlRef accessControlRef = SecAccessControlCreateWithFlags(
-                                                                           kCFAllocatorDefault,
-                                                                           kSecAttrAccessibleWhenUnlockedThisDeviceOnly,
-                                                                           kSecAccessControlUserPresence,
-                                                                           &accessControlError);
     
-    if (accessControlRef == NULL || accessControlError != NULL) {
+    SecAccessControlRef pincodeACR = SecAccessControlCreateWithFlags(
+                                                                     kCFAllocatorDefault,
+                                                                     kSecAttrAccessibleWhenUnlockedThisDeviceOnly,
+                                                                     kSecAccessControlApplicationPassword,
+                                                                     &accessControlError);
+    
+    SecAccessControlRef biometryACR = SecAccessControlCreateWithFlags(
+                                                                     kCFAllocatorDefault,
+                                                                     kSecAttrAccessibleWhenUnlockedThisDeviceOnly,
+                                                                     kSecAccessControlUserPresence,
+                                                                     &accessControlError);
+    
+    if (pincodeACR == NULL || accessControlError != NULL) {
         NSLog(@"Error_Ocurred__%@", accessControlError);
+        CFRelease(accessControlError);
+        return;
+    } else if (biometryACR == NULL || accessControlError != NULL) {
+        NSLog(@"Error_Ocurred__%@", accessControlError);
+        CFRelease(accessControlError);
         return;
     }
     
@@ -80,40 +127,43 @@
     [query setObject:(__bridge id)kSecClassKey forKey:(__bridge id)kSecClass];
     [query setObject:(__bridge id)kSecAttrKeyTypeRSA forKey:(__bridge id)kSecAttrKeyType];
     [query setObject:@2048 forKey:(__bridge id)kSecAttrKeySizeInBits];
+    //여기까지는 기본적인 RSAKeyPair 생성 형태.
     
-    [context evaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics localizedReason:@"Access your password on the keychain" reply:^(BOOL success, NSError *error) {
-
-        CFErrorRef attrError = NULL;
-        if (success) {
-            [query setObject:(__bridge id)accessControlRef forKey:(__bridge id)kSecAttrAccessControl];
-            [query setObject:@{
-                (__bridge id)kSecAttrIsPermanent : @YES,
-                (__bridge id)kSecUseAuthenticationContext : context
-            } forKey:(__bridge id)kSecPrivateKeyAttrs];
-        } else {
-            if (error.code == LAErrorUserFallback) {
-                NSLog(@"Pincode Insert.");
-                
-//                여기에 pincode 입력 alert 필요.
-            }
-            
-            [query setObject:@{
-                (__bridge id)kSecAttrIsPermanent : @YES,
-                (__bridge id)kSecAttrApplicationTag : tag
-            } forKey:(__bridge id)kSecPrivateKeyAttrs];
-        }
+    if (context != nil && pincode == nil) {
+        NSLog(@"Save with biometry in Keychain.");
         
-        SecKeyRef privateKeyRef = SecKeyCreateRandomKey((__bridge CFDictionaryRef)query, &attrError);
-        if (attrError != NULL) {
-            NSLog(@"Error_Ocurred__%@", attrError);
-            
-            CFRelease(attrError);
-            return;
-        }
+//        [query setObject:(__bridge id)biometryACR forKey:(__bridge id)kSecAttrAccessControl];
+        [query setObject:@{
+            (__bridge id)kSecAttrIsPermanent : @YES,
+            (__bridge id)kSecUseAuthenticationContext : context,
+            (__bridge id)kSecAttrAccessControl : (__bridge id)biometryACR
+        } forKey:(__bridge id)kSecPrivateKeyAttrs];
         
-        NSLog(@"Create_Key_Succese, PrivateKey_Info__%@", privateKeyRef);
+    } else if (context == nil && pincode != nil) {
+        NSLog(@"Save with pincode in Keychain");
+        
+        NSData *tagData = [pincode dataUsingEncoding:NSUTF8StringEncoding];
+//        [query setObject:(__bridge id)pincodeACR forKey:(__bridge id)kSecAttrAccessControl];
+        [query setObject:@{
+            (__bridge id)kSecAttrIsPermanent : @YES,
+            (__bridge id)kSecAttrApplicationTag : tagData,
+            (__bridge id)kSecAttrAccessControl : (__bridge id)pincodeACR
+        } forKey:(__bridge id)kSecPrivateKeyAttrs];
+    } else {
+        NSLog(@"Error_Ocurred__Can't Receive Data.");
         return;
-    }];
+    }
+    
+    SecKeyRef privateKeyRef = SecKeyCreateRandomKey((__bridge CFDictionaryRef)query, &attrError);
+    if (attrError != NULL) {
+        NSLog(@"Error_Ocurred__%@", attrError);
+        
+        CFRelease(attrError);
+        return;
+    }
+    
+    NSLog(@"Create_Key_Succese, PrivateKey_Info__%@", privateKeyRef);
+    return;
 }
 
 /**
@@ -305,16 +355,19 @@
     return result;
 }
 
-+(SecKeyRef)getPrivateKey:(NSString *)tag
++(SecKeyRef)getPrivateKey
 {
     OSStatus sanityCheck = noErr;
     SecKeyRef privateKeyRef = NULL;
     
+    NSMutableDictionary *mutableQuery = [NSMutableDictionary dictionary];
+    [mutableQuery setObject:(__bridge id)kSecClassKey forKey:(__bridge id)kSecClass];
+    [mutableQuery setObject:(__bridge id)kSecAttrKeyTypeRSA forKey:(__bridge id)kSecAttrKeyType];
+
+    
     NSDictionary *query = @{
         (__bridge id)kSecClass : (__bridge id)kSecClassKey,
         (__bridge id)kSecAttrKeyType : (__bridge id)kSecAttrKeyTypeRSA,
-//        (__bridge id)kSecAttrApplicationTag : tag,
-        
         (__bridge id)kSecMatchLimit : (__bridge id)kSecMatchLimitOne,
         (__bridge id)kSecUseOperationPrompt : @"Access you private key in keychain",
         (__bridge id)kSecReturnRef : @YES
@@ -323,7 +376,7 @@
     sanityCheck = SecItemCopyMatching((__bridge CFDictionaryRef)query, (CFTypeRef *)&privateKeyRef);
     
     if (sanityCheck == noErr) {
-        NSLog(@"Get_PrivateKey_Success.");
+        NSLog(@"Get_PrivateKey_Success__%@", privateKeyRef);
         return privateKeyRef;
     }
     
@@ -335,7 +388,7 @@
 
 +(CFDataRef)encryptWithTag:(NSString *)tag inPlainText:(NSString *)plainText
 {
-    SecKeyRef privateKeyRef = [KeyStore getPrivateKey:tag];
+    SecKeyRef privateKeyRef = [KeyStore getPrivateKey];
     SecKeyRef publicKeyRef = SecKeyCopyPublicKey(privateKeyRef);
 
     CFErrorRef error = NULL;
@@ -358,7 +411,7 @@
 
 +(NSString *)decryptWithTag:(NSString *)tag inCipher:(CFDataRef)cipher
 {
-    SecKeyRef privateKey = [KeyStore getPrivateKey:tag];
+    SecKeyRef privateKey = [KeyStore getPrivateKey];
     CFErrorRef error = NULL;
     CFDataRef decryptionResult = SecKeyCreateDecryptedData(
                                                            privateKey,

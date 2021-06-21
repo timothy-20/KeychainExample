@@ -12,6 +12,11 @@
 
 #import "KeyStore/KeyStore.h"
 
+@interface ViewController()
+@property(nonatomic, strong) NSString* tagString;
+
+@end
+
 @implementation ViewController
 
 - (void)viewDidLoad {
@@ -19,14 +24,12 @@
 }
 
 -(IBAction)createKeyPairButton:(id)sender {
-    NSData *tag = [@"aa" dataUsingEncoding:NSUTF8StringEncoding];
-    [KeyStore createRandomKeyPairWithTag:tag];
+    [KeyStore keychainWithAlertView:self];
 }
 
 -(IBAction)checkKeychainForTouchIdButton:(id)sender
 {
-//    [KeyStore verifyKeychainForTouchId];
-    [KeyStore getPrivateKey:@"aa"];
+    [KeyStore getPrivateKey];
 }
 
 -(IBAction)deleteAllKeychainButton:(id)sender {
@@ -56,16 +59,15 @@
     
     NSLog(@"saltAndAsterKey_Cipher__%@", saltAndMasterKey);
      
-    
-    [KeyStore createRandomKeyPairWithTag:@"a"];
-    
-    CFDataRef keychainCipher = [KeyStore encryptWithTag:@"a" inPlainText:saltAndMasterKey];
-    NSLog(@"Encryption_Result__%@", keychainCipher);
-    
-    NSString *keychainDecryption = [KeyStore decryptWithTag:@"a" inCipher:keychainCipher];
-    NSLog(@"Decryption_Result__%@", keychainDecryption);
-    
-    [KeyStore deleteAllKeychainItems];
+//    [KeyStore createRandomKeyPairWithTag:@"a"];
+//
+//    CFDataRef keychainCipher = [KeyStore encryptWithTag:@"a" inPlainText:saltAndMasterKey];
+//    NSLog(@"Encryption_Result__%@", keychainCipher);
+//
+//    NSString *keychainDecryption = [KeyStore decryptWithTag:@"a" inCipher:keychainCipher];
+//    NSLog(@"Decryption_Result__%@", keychainDecryption);
+//
+//    [KeyStore deleteAllKeychainItems];
 }
 
 @end
